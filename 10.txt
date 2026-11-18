@@ -1,0 +1,25 @@
+Question 10: JDBC ClassNotFoundException Analysis
+Possible Cause:
+The ClassNotFoundException: com.mysql.cj.jdbc.Driver occurs because the Java Virtual Machine (JVM) cannot find the MySQL JDBC driver class file at runtime. This means the mysql-connector-j.jar file is missing from the project's build path or classpath.
+
+Steps to configure the MySQL Connector/J .jar file and establish the connection:
+
+Download the Driver: Download the official mysql-connector-j-X.X.XX.jar file from the MySQL website.
+
+Add to Project (IDE Method - e.g., Eclipse/IntelliJ):
+
+Right-click your project -> Properties / Module Settings.
+
+Go to "Java Build Path" -> "Libraries" (or "Dependencies").
+
+Click "Add External JARs" and select the downloaded .jar file.
+
+Apply and close.
+
+Add to Classpath (Command Line Method):
+
+Compile: javac -cp .;mysql-connector-j.jar MyProgram.java
+
+Run: java -cp .;mysql-connector-j.jar MyProgram
+
+Establish Connection (Code): Once the driver is on the classpath, DriverManager.getConnection(url, username, password) will successfully load the driver and connect to the database.
